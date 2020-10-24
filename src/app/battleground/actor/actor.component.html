@@ -1,0 +1,19 @@
+<h1>Actors</h1>
+
+<button mat-raised-button type="button" (click)="createActor()">Create Actor</button> &nbsp;
+<button mat-raised-button type="button" (click)="deleteAll()">Delete All Actors</button>
+
+<div *ngFor="let actor of actors$ | async">
+    <br>
+    <mat-card>
+        <mat-card-title>{{actor.name}}</mat-card-title>
+        <p>Level: {{actor.level}}</p>
+        <p>HP: {{actor.stats.hp}}</p>
+        <p>MP: {{actor.stats.mp}}</p>
+        <p>STR: {{actor.stats.strength}}</p>
+        <p>DEF: {{actor.stats.defence}}</p>
+        <p>AGL: {{actor.stats.agility}}</p>
+        <button mat-raised-button type="button" (click)="updateActor(actor.id, actor.level + 1, {hp: actor.stats.hp + 1, mp: actor.stats.mp + 1, strength: actor.stats.strength + 1, defence: actor.stats.defence + 1, agility: actor.stats.agility + 1})">Level Up!</button>&nbsp;
+        <button mat-raised-button type="button" (click)="deleteActor(actor.id)">Delete Actor</button>
+    </mat-card>
+</div>
